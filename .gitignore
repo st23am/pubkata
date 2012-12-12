@@ -1,0 +1,8 @@
+vendor/ruby/1.9.1/gems
+vendor/ruby/1.9.1/specifications
+vendor/ruby/1.9.1/bin
+
+.bundle
+.env
+bin/
+
