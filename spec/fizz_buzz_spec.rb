@@ -3,7 +3,8 @@ require_relative 'spec_helper'
 
 describe "#fizz_buzz" do
 
-  Given(:subject) { #your Object }
+  # replace with your object
+  Given(:subject) { "Your Object" }
 
   context "with an input of 1" do
     Given(:input) {  1 }
