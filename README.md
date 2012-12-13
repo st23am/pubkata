@@ -1,7 +1,10 @@
 # Pub Kata
 
-1. Open a spec in the spec directory with your favorite editor.
+1. Go to the pub
 
-2. Make it pass.
+2. Open a spec in the spec directory with your favorite editor.
 
-3. Go get a drink (HINT: doesn't have to be alcholic)
+3. Make it pass.
+
+4. Go get a drink (HINT: doesn't have to be alcholic)
+
