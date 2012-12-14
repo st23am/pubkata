@@ -32,7 +32,13 @@
 
 =end
 
+require_relative '../setup'
+require_relative 'spec_helper'
+
+require_relative '../src/bowling_game'
+
 describe BowlingGame do
+
   context "Gutter Game" do
     Given(:game) { BowlingGame.new }
     When { 20.times { game.roll(0)} }
