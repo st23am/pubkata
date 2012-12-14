@@ -32,15 +32,20 @@
 
 =end
 
-describe BowlingGame do
+require_relative '../setup'
+require_relative 'spec_helper'
+
+describe "BowlingGame" do
+  Given(:bowling_game) { "your bowling game object" }
+
   context "Gutter Game" do
-    Given(:game) { BowlingGame.new }
+    Given(:game) { bowling_game.new }
     When { 20.times { game.roll(0)} }
     Then { game.score.should == 0 }
   end
 
   context "Normal game no marks (strikes or spares)" do
-    Given(:game) { BowlingGame.new }
+    Given(:game) { bowling_game.new }
     When do
       [1,2, 3,4, 5,4, 6,3, 0,9, 9,0, 5,4, 7,1, 1,8, 3,3].each do |ball|
         game.roll(ball)
@@ -51,7 +56,7 @@ describe BowlingGame do
 
 
   context "spares" do
-    Given(:game) { BowlingGame.new }
+    Given(:game) { bowling_game.new }
     When do
       [1,2, 3,4, 5,4, 6,3, 0,9, 9,1, 5,4, 7,1, 1,8, 3,3].each do |ball|
         game.roll(ball)
@@ -61,7 +66,7 @@ describe BowlingGame do
   end
 
   context "strikes" do
-    Given(:game) { BowlingGame.new }
+    Given(:game) { bowling_game.new }
     When do
       [1,2, 3,4, 5,4, 6,3, 0,9, 10, 5,4, 7,1, 1,8, 3,3].each do |ball|
         game.roll(ball)
@@ -71,7 +76,7 @@ describe BowlingGame do
   end
 
   context "strike followed by spare" do
-    Given(:game) { BowlingGame.new }
+    Given(:game) { bowling_game.new }
     When do
       [1,2, 3,4, 5,4, 6,3, 10, 9,1, 5,4, 7,1, 1,8, 3,3].each do |ball|
         game.roll(ball)
@@ -81,7 +86,7 @@ describe BowlingGame do
   end
 
   context "spares followed by strike" do
-    Given(:game) { BowlingGame.new }
+    Given(:game) { bowling_game.new }
     When do
       [1,2, 3,4, 5,4, 6,3, 1,9, 10, 5,4, 7,1, 1,8, 3,3].each do |ball|
         game.roll(ball)
@@ -91,7 +96,7 @@ describe BowlingGame do
   end
 
   context "turkey (3 strikes in a row)" do
-    Given(:game) { BowlingGame.new }
+    Given(:game) { bowling_game.new }
     When do
       [1,2, 3,4, 5,4, 6,3, 10, 10, 10, 7,1, 1,8, 3,3].each do |ball|
         game.roll(ball)
@@ -101,7 +106,7 @@ describe BowlingGame do
   end
 
   context "strike in the 10th frame" do
-    Given(:game) { BowlingGame.new }
+    Given(:game) { bowling_game.new }
     When do
       [1,2, 3,4, 5,4, 6,3, 0,9, 9,0, 5,4, 7,1, 1,8, 10,3,3].each do |ball|
         game.roll(ball)
@@ -111,7 +116,7 @@ describe BowlingGame do
   end
 
   context "spare in the 10th frame" do
-    Given(:game) { BowlingGame.new }
+    Given(:game) { bowling_game.new }
     When do
       [1,2, 3,4, 5,4, 6,3, 0,9, 9,0, 5,4, 7,1, 1,8, 1,9,3].each do |ball|
         game.roll(ball)
@@ -121,7 +126,7 @@ describe BowlingGame do
   end
 
   context "Perfect Game" do
-    Given(:game) { BowlingGame.new }
+    Given(:game) { bowling_game.new }
     When { 12.times { game.roll(10) }}
     Then { game.score.should == 300 }
   end
