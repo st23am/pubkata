@@ -6,5 +6,5 @@
 
 3. Make it pass.
 
-4. Go get a drink (HINT: doesn't have to be alcholic)
+4. Go get a drink (HINT: doesn't have to be alcoholic)
 
