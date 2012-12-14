@@ -33,90 +33,97 @@
 =end
 
 describe BowlingGame do
-  Given(:game) { BowlingGame.new }
-
-  context "Frame: 1 Roll: 1 Kocked Down Pins: 1" do
-    #total score should nil
+  context "Gutter Game" do
+    Given(:game) { BowlingGame.new }
+    When { 20.times { game.roll(0)} }
+    Then { game.score.should == 0 }
   end
 
-  context "Frame: 1 Roll: 2 Kocked Down Pins: 4" do
-    #total score should 5
+  context "Normal game no marks (strikes or spares)" do
+    Given(:game) { BowlingGame.new }
+    When do
+      [1,2, 3,4, 5,4, 6,3, 0,9, 9,0, 5,4, 7,1, 1,8, 3,3].each do |ball|
+        game.roll(ball)
+      end
+    end
+    Then { game.score.should == 78 }
   end
 
-  context "Frame: 2 Roll: 1 Kocked Down Pins: 4" do
-    #total score should nil
+
+  context "spares" do
+    Given(:game) { BowlingGame.new }
+    When do
+      [1,2, 3,4, 5,4, 6,3, 0,9, 9,1, 5,4, 7,1, 1,8, 3,3].each do |ball|
+        game.roll(ball)
+      end
+    end
+    Then { game.score.should == 84 }
   end
 
-  context "Frame: 2 Roll: 2 Kocked Down Pins: 5" do
-    #total score should 14
+  context "strikes" do
+    Given(:game) { BowlingGame.new }
+    When do
+      [1,2, 3,4, 5,4, 6,3, 0,9, 10, 5,4, 7,1, 1,8, 3,3].each do |ball|
+        game.roll(ball)
+      end
+    end
+    Then { game.score.should == 88 }
   end
 
-  context "Frame: 3 Roll: 1 Kocked Down Pins: 6" do
-    #total score should nil
+  context "strike followed by spare" do
+    Given(:game) { BowlingGame.new }
+    When do
+      [1,2, 3,4, 5,4, 6,3, 10, 9,1, 5,4, 7,1, 1,8, 3,3].each do |ball|
+        game.roll(ball)
+      end
+    end
+    Then { game.score.should == 95 }
   end
 
-  context "Frame: 3 Roll: 2 Kocked Down Pins: 4" do
-    #total score should 29
+  context "spares followed by strike" do
+    Given(:game) { BowlingGame.new }
+    When do
+      [1,2, 3,4, 5,4, 6,3, 1,9, 10, 5,4, 7,1, 1,8, 3,3].each do |ball|
+        game.roll(ball)
+      end
+    end
+    Then { game.score.should == 99 }
   end
 
-  context "Frame: 4 Roll: 1 Kocked Down Pins: 5" do
-    #total score should nil
+  context "turkey (3 strikes in a row)" do
+    Given(:game) { BowlingGame.new }
+    When do
+      [1,2, 3,4, 5,4, 6,3, 10, 10, 10, 7,1, 1,8, 3,3].each do |ball|
+        game.roll(ball)
+      end
+    end
+    Then { game.score.should == 126 }
   end
 
-  context "Frame: 4 Roll: 2 Kocked Down Pins: 5" do
-    #total score should 49
+  context "strike in the 10th frame" do
+    Given(:game) { BowlingGame.new }
+    When do
+      [1,2, 3,4, 5,4, 6,3, 0,9, 9,0, 5,4, 7,1, 1,8, 10,3,3].each do |ball|
+        game.roll(ball)
+      end
+    end
+    Then { game.score.should == 88 }
   end
 
-  context "Frame: 5 Roll: 1 Kocked Down Pins: 10" do
-    #total score should nil
+  context "spare in the 10th frame" do
+    Given(:game) { BowlingGame.new }
+    When do
+      [1,2, 3,4, 5,4, 6,3, 0,9, 9,0, 5,4, 7,1, 1,8, 1,9,3].each do |ball|
+        game.roll(ball)
+      end
+    end
+    Then { game.score.should == 85 }
   end
 
-  context "Frame: 5 Roll: 2 Kocked Down Pins: nil" do
-    #total score should 60
-  end
-
-  context "Frame: 6 Roll: 1 Kocked Down Pins: 0" do
-    #total score should nil
-  end
-
-  context "Frame: 6 Roll: 2 Kocked Down Pins: 1" do
-    #total score should 61
-  end
-
-  context "Frame: 7 Roll: 1 Kocked Down Pins: 7" do
-    #total score should nil
-  end
-
-  context "Frame: 7 Roll: 2 Kocked Down Pins: 3" do
-    #total score should 77
-  end
-
-  context "Frame: 8 Roll: 1 Kocked Down Pins: 6" do
-    #total score should nil
-  end
-
-  context "Frame: 8 Roll: 2 Kocked Down Pins: 4" do
-    #total score should 97
-  end
-
-  context "Frame: 9 Roll: 1 Kocked Down Pins: 10" do
-    #total score should nil
-  end
-
-  context "Frame: 9 Roll: 2 Kocked Down Pins: nil" do
-    #total score should 117
-  end
-
-  context "Frame: 10 Roll: 1 Kocked Down Pins: 2" do
-    #total score should nil
-  end
-
-  context "Frame: 10 Roll: 2 Kocked Down Pins: 8" do
-    #total score should nil
-  end
-
-  context "Frame: 10 Roll: 3 Kocked Down Pins: 6" do
-    #total score should 133
+  context "Perfect Game" do
+    Given(:game) { BowlingGame.new }
+    When { 12.times { game.roll(10) }}
+    Then { game.score.should == 300 }
   end
 end
 
