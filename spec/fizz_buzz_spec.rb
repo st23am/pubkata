@@ -2,34 +2,36 @@
 #FizzBuzz Kata
 http://content.codersdojo.org/code-kata-catalogue/fizz-buzz/
 
-Return “fizz”, “buzz” or “fizzbuzz”.
+Return "fizz", "buzz" or "fizzbuzz".
 
 For a given natural number greater zero return
 
-“fizz” if the number is dividable by 3
-“buzz” if the number is dividable by 5
-“fizzbuzz” if the number is dividable by 15
+"fizz" if the number is dividable by 3
+"buzz" if the number is dividable by 5
+"fizzbuzz" if the number is dividable by 15
+
 Test Cases
 
-Input	Result
-1	1
-2	2
-3	fizz
-4	4
-5	buzz
-6	fizz
-10	buzz
-15	fizzbuzz
+Input   Result
+1       1
+2       2
+3       fizz
+4       4
+5       buzz
+6       fizz
+10      buzz
+15      fizzbuzz
 
 =end
 
 require_relative '../setup'
 require_relative 'spec_helper'
 
+require_relative '../src/fizz_buzz'
+
 describe "#fizz_buzz" do
 
-  # replace with your object
-  Given(:subject) { "Your Object" }
+  Given(:subject) { FizzBuzz.new }
 
   context "with an input of 1" do
     Given(:input) {  1 }
