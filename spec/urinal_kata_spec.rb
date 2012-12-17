@@ -10,6 +10,8 @@
   1. There is a line
   2. Someone else has already broken that particular rule.
 
+  Kata Courtesy of Mel Grubb
+    http://melgrubb.wordpress.com/2012/01/16/urinal-code-kata/
 =end
 
 
