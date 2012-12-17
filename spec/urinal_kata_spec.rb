@@ -1,3 +1,18 @@
+=begin
+  Urinal Kata Rules
+
+  1. Get as far away from the door as possible.
+  2. Try not to stand next to another dude.
+  3. Really try not to stand next to two other dudes.
+
+  The exceptions are not that complicated either. Rules 2 and 3 can be violated in one of two cases.
+
+  1. There is a line
+  2. Someone else has already broken that particular rule.
+
+=end
+
+
 require_relative '../setup'
 require_relative 'spec_helper'
 require_relative '../src/urinal_rules'
