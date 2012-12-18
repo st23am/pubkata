@@ -37,6 +37,7 @@ require_relative 'spec_helper'
 require_relative '../src/bowling_game'
 
 describe BowlingGame do
+  Given(:bowling_game) { BowlingGame }
 
   context "Gutter Game" do
     Given(:game) { bowling_game.new }

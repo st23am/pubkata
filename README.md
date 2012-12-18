@@ -27,7 +27,15 @@
 
 3. Run the spec and pick the next failure:
 
-    ```rspec spec/*kata_name*_spec```
+    ```rspec --fail-fast --format d spec/*kata_name*_spec.rb```
+
+    It can help to define an alias to make this easier:
+
+    ```alias run='rspec --fail-fast --format d'```
+
+    Then it's just something like:
+
+    ```run spec/fizz_buzz_spec.rb```
 
     * Until no more failures:
 
