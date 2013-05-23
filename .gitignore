@@ -6,3 +6,4 @@ vendor/ruby/1.9.1/bin
 .env
 bin/
 
+vendor/ruby
