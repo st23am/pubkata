@@ -1,6 +1,6 @@
 require_relative '../setup'
 require_relative 'spec_helper'
-require_relative 'src/roman_numeral'
+require_relative '../src/roman_numeral'
 
 describe "#roman_numeral" do
   Given(:subject) { RomanNumeral.new }
@@ -69,5 +69,29 @@ describe "#roman_numeral" do
     Given(:input) { 10 }
     When(:result) { subject.calculate(input) }
     Then { result.should eql("X") }
+  end
+
+  context "an input of 23 returns 'XXIII'" do
+    Given(:input) { 23 }
+    When(:result) { subject.calculate(input) }
+    Then { result.should eql("XXIII") }
+  end
+
+  context "an input of 49 returns 'XLIX'" do
+    Given(:input) { 49 }
+    When(:result) { subject.calculate(input) }
+    Then { result.should eql("XLIX") }
+  end
+
+  context "an input of 75 returns 'LXXV'" do
+    Given(:input) { 75 }
+    When(:result) { subject.calculate(input) }
+    Then { result.should eql("LXXV") }
+  end
+
+  context "an input of 99 returns 'XCIX'" do
+    Given(:input) { 99 }
+    When(:result) { subject.calculate(input) }
+    Then { result.should eql("XCIX") }
   end
 end
