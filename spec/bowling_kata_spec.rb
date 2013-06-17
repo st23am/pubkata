@@ -109,6 +109,16 @@ describe BowlingGame do
   context "strike in the 10th frame" do
     Given(:game) { bowling_game.new }
     When do
+      [10, 10, 10, 10, 10, 10, 10, 10, 10, 10,10,10].each do |ball|
+        game.roll(ball)
+      end
+    end
+    Then { game.score.should == 300 }
+  end
+
+  context "strike in the 10th frame" do
+    Given(:game) { bowling_game.new }
+    When do
       [1,2, 3,4, 5,4, 6,3, 0,9, 9,0, 5,4, 7,1, 1,8, 10,3,3].each do |ball|
         game.roll(ball)
       end
