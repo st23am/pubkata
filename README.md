@@ -37,7 +37,7 @@
 
     ```run spec/fizz_buzz_spec.rb```
 
-    * Until no more failures:
+    Until no more failures:
 
         1. Open the class from the ```src/``` directory with your favorite editor.
 
